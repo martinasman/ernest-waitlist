@@ -119,6 +119,14 @@ const BUSINESSES = [
     image: "/businesses/Peak-Share.png",
     tags: ["Analytics", "Automation"],
   },
+  {
+    name: "Skate Empire",
+    category: "Skateboarding",
+    description: "Premium skate gear & apparel store",
+    color: ["#FEE2E2", "#FECACA"] as const,
+    image: "/businesses/skateEmpire.jpg",
+    tags: ["Payments", "Integrations"],
+  },
 ];
 
 type Business = (typeof BUSINESSES)[number];
