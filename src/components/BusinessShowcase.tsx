@@ -40,12 +40,12 @@ const BUSINESSES = [
     tags: ["Data Forms", "Automation"],
   },
   {
-    name: "LinkPay",
-    category: "Affiliate Network",
-    description: "SaaS affiliate revenue engine",
-    color: ["#D1FAE5", "#6EE7B7"] as const,
-    image: "/businesses/LinkPay.png",
-    tags: ["Analytics", "Payments"],
+    name: "Architecture Stockholm",
+    category: "Architecture",
+    description: "Modern architectural design studio",
+    color: ["#E0E7FF", "#C7D2FE"] as const,
+    image: "/businesses/architecturestockholm.png",
+    tags: ["Data Forms", "Integrations"],
   },
   {
     name: "BundleIt",
