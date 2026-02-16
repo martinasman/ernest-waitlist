@@ -127,6 +127,14 @@ const BUSINESSES = [
     image: "/businesses/skateEmpire.jpg",
     tags: ["Payments", "Integrations"],
   },
+  {
+    name: "Rasa Kitchen",
+    category: "Indian Restaurant",
+    description: "Authentic Indian cuisine & catering",
+    color: ["#FED7AA", "#FDBA74"] as const,
+    image: "/businesses/Indian-Restaurant.png",
+    tags: ["Payments", "Data Forms"],
+  },
 ];
 
 type Business = (typeof BUSINESSES)[number];
