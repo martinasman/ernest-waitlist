@@ -52,7 +52,7 @@ export function NextBatch() {
               <p className="text-xs md:text-sm text-[#999999] font-medium uppercase tracking-wider">
                 Next batch opens in
               </p>
-              <p className="text-5xl md:text-6xl font-bold text-[#191919] mt-3 mb-3 tabular-nums">
+              <p className="text-5xl md:text-6xl font-medium text-[#191919] mt-3 mb-3 tabular-nums">
                 {mounted
                   ? `${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${String(timeLeft.seconds).padStart(2, "0")}s`
                   : "\u00A0"}
