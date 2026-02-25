@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FFFCF3;
-  --foreground: #191919;
-  --primary: #191919;
+  --background: #0A0A0A;
+  --foreground: #E5E5E5;
+  --primary: #E5E5E5;
   --accent: #10A37F;
   --accent-hover: #0D8A6A;
   --muted: #888888;
-  --border: #E5E0D5;
-  --surface: #F5F0E8;
+  --border: #2A2A2A;
+  --surface: #161616;
 }
 
 @theme inline {
@@ -28,8 +28,8 @@ body {
 }
 
 .dot-grid {
-  background-image: radial-gradient(circle, #19191918 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(circle, #333333 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
 }
 
 @keyframes marquee {
@@ -45,6 +45,20 @@ body {
   animation: marquee 40s linear infinite;
 }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.9); }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 0.8s step-end infinite;
 }

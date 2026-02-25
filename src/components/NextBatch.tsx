@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const BATCH_OPEN_DATE = new Date("2026-02-23T00:00:00");
+const BATCH_OPEN_DATE = new Date("2026-03-08T00:00:00");
 
 function calculateTimeLeft() {
   const diff = BATCH_OPEN_DATE.getTime() - Date.now();
@@ -18,6 +18,9 @@ function calculateTimeLeft() {
     seconds: Math.floor((diff % (1000 * 60)) / 1000),
   };
 }
+
+const UNITS = ["days", "hours", "minutes", "seconds"] as const;
+const LABELS = { days: "d", hours: "h", minutes: "m", seconds: "s" };
 
 export function NextBatch() {
   const [mounted, setMounted] = useState(false);
@@ -35,37 +38,42 @@ export function NextBatch() {
   const expired = timeLeft === null;
 
   return (
-    <section className="w-full py-6 md:py-8">
-      <div className="max-w-2xl mx-auto px-6">
-        <div className="bg-[#F5F0E8] border border-[#E5E0D5] rounded-2xl px-6 py-5 md:px-8 md:py-6 text-center">
-          {expired ? (
-            <>
-              <p className="text-xs md:text-sm text-[#999999] font-medium uppercase tracking-wider">
-                Batch now open
-              </p>
-              <p className="text-4xl md:text-5xl font-bold text-[#191919] mt-3 mb-3">
-                Limited spots remaining
-              </p>
-            </>
-          ) : (
-            <>
-              <p className="text-xs md:text-sm text-[#999999] font-medium uppercase tracking-wider">
-                Next batch opens in
-              </p>
-              <p className="text-5xl md:text-6xl font-medium text-[#191919] mt-3 mb-3 tabular-nums">
-                {mounted
-                  ? `${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${String(timeLeft.seconds).padStart(2, "0")}s`
-                  : "\u00A0"}
-              </p>
-              <p className="text-sm md:text-base text-[#666666]">
-                Limited to{" "}
-                <span className="text-[#10A37F] font-medium">1,000</span> new
-                spots
-              </p>
-            </>
-          )}
-        </div>
-      </div>
-    </section>
+    <div className="w-full max-w-xl mx-auto text-center">
+      {expired ? (
+        <p className="text-sm text-[#10A37F] font-medium">
+          Batch now open &mdash; limited spots remaining
+        </p>
+      ) : (
+        <>
+          <p className="text-xs text-[#999999] font-medium uppercase tracking-wider mb-3">
+            Next batch opens in
+          </p>
+          <div className="flex items-baseline justify-center">
+            {mounted ? (
+              UNITS.map((unit) => (
+                <div key={unit} className="flex items-baseline">
+                  <span className="text-3xl md:text-4xl font-semibold text-[#E5E5E5] tabular-nums leading-none">
+                    {String(timeLeft[unit]).padStart(unit === "days" ? 1 : 2, "0")}
+                  </span>
+                  <span className="text-xs md:text-sm text-[#999999] ml-0.5 mr-2.5">
+                    {LABELS[unit]}
+                  </span>
+                  {unit === "seconds" && (
+                    <span className="w-1.5 h-1.5 bg-[#ef4444] rounded-full animate-pulse-dot ml-0.5" />
+                  )}
+                </div>
+              ))
+            ) : (
+              <span>&nbsp;</span>
+            )}
+          </div>
+          <p className="text-xs text-[#666666] mt-3">
+            Limited to{" "}
+            <span className="text-[#10A37F] font-medium">1,000</span> new
+            spots
+          </p>
+        </>
+      )}
+    </div>
   );
 }
