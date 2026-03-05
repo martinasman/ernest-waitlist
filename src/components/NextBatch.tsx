@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const BATCH_OPEN_DATE = new Date("2026-03-08T00:00:00");
+const BATCH_OPEN_DATE = new Date("2026-03-15T00:00:00");
 
 function calculateTimeLeft() {
   const diff = BATCH_OPEN_DATE.getTime() - Date.now();
